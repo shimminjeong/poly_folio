@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        body{
+            margin: 0;
+            /*background-color: green;*/
+        }
+        
+        a {
+            color:black;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 45px;
+            text-align: center;
+            border-bottom: 1px solid gray;
+            margin: 0;
+            padding: 20px;
+        }
+
+        ol{
+            border-right:1px solid gray;
+        }
+        /* id가 grid인 ol태그*/
+        #grid ol{  
+            width: 100px;
+            margin: 0;
+            padding: 20px;
+            padding-left: 33px;
+        }
+        #grid{
+            display: grid;
+            grid-template-columns: 150px 1fr;
+        }
+        #grid #article{
+            padding-left: 25px;
+        }
+        @media(max-width:800px) {
+            #grid{
+                display: block;
+            }
+            ol{
+                border-right: none;
+            }
+            h1{
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>폴리 도서관</h1>
+    <div id="grid">
+        <ol>
+            <li><a href="user.html"> 회원관리</a></li>
+            <li><a href="book.html"> 도서관리</a></li>
+            <li><a href="checkout.html"> 대출관리</a></li>
+        </ol>
+        <div id="article">
+            <h2>신간도서 소개</h2>
+            <P>
+                광고
+            </P>
+        </div>
+    </div>
+   
+</body>
+</html>
