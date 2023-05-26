@@ -1,12 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>대출이요</h1>
-</body>
-</html>
+---
+layout: base
+---
+<style>
+    #content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #info {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .section {
+        margin-bottom: 60px;
+    }
+
+    .onerow {
+        display: block;
+        margin-bottom: 15px;
+    }
+</style>
+
+
+
+<div id="content">
+    <div id="info">
+        <h1 class="section">대출 관리</h1>
+        <div class="onerow">
+            <span> 이름 </span>
+            <input class="inputbox" type="text" placeholder="이름을 입력하세요" aria-label="inputuser">
+        </div>
+        <div class="onerow">
+            <span> 책제목 </span>
+            <input class="inputbox" type="text" placeholder="책제목을 입력하세요" aria-label="inputuser">
+        </div>
+    </div>
+
+    <div id="selectbtn">
+        <button>대여</button>
+        <button>반납</button>
+        <button>연장</button>
+    </div>
+</div>
