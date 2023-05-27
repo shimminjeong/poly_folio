@@ -69,58 +69,104 @@
         </header>
         <style>
     #content {
-        height: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
+        height: 100%;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
-    #info {
-        display: block;
-        margin-bottom: 30px;
+    caption {
+        display: none;
     }
 
-    .section {
-        margin-bottom: 60px;
+
+    .dataLoanTable {
+        display: flex;
+        border: 2px solid black;
+        margin-top: 30px;
+        overflow-x: auto;
     }
 
-    .onerow {
-        display: block;
-        margin-bottom: 15px;
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
     }
 </style>
-
-
-
 <div id="content">
-    <div id="info">
-        <h2 class="section">회원 관리</h2>
-        <div class="onerow">
-            <span> 이름 </span>
-            <input class="inputbox" type="text" placeholder="이름을 입력하세요" aria-label="inputuser">
-        </div>
-        <div class="onerow">
-            <span> 생년월일 </span>
-            <input class="inputbox" type="text" placeholder="생년월일을 입력하세요" aria-label="inputuser">
-        </div>
-        <div class="onerow">
-            <span> 주소 </span>
-            <input class="inputbox" type="text" placeholder="주소를 입력하세요" aria-label="inputuser">
-        </div>
-        <div class="onerow">
-            <span> 전화번호 </span>
-            <input class="inputbox" type="text" placeholder="전화번호를 입력하세요" aria-label="inputuser">
-        </div>
+    <h2>대여목록</h2>
+
+    <div class="dataLoanTable">
+        <!-- <script type="text/javascript">
+            function wjChecked() {
+                var isCheck = false;
+                $('input[name="recKey[]"]').each(function () {
+                    if ($(this).attr('checked')) {
+                        isCheck = true;
+                    }
+                })
+                if (!isCheck) {
+                    alert('하나이상 자료를 선택해 주세요.');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+        <form id="forminfo" method="post" name="loanDataXls" action="./index.php?mod=wdDataSearch&amp;act=loanDataXls"
+            onsubmit="return wjChecked()" target="_blank"> -->
+        <table id="tabinfo" summary="">
+            <caption>번호, 등록번호, 자료명, 대출일 / 반납예정일, 반납일 / 반납상태</caption>
+            <colgroup>
+                <col width="10%">
+                <col width="15%">
+                <col width="30%">
+                <col width="20%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">이름</th>
+                    <th scope="col">책제목</th>
+                    <th scope="col">대출일 / 반납예정일</th>
+                    <th scope="col">반납일 / 반납상태</th>
+
+                </tr>
+            </thead>
+            <tbody id="_loanHistoryListChk">
+                <tr>
+                    <td>6</td>
+                    <td class="tal">심민정</td>
+                    <td>교통경찰의 밤</td>
+                    <td>2022-11-28<br>
+                        <span class="orange">2022-12-12</span>
+                    </td>
+                    <td>2022-12-13<br>
+                        <span class="orange">연체반납</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="tal">심영민</td>
+                    <td class="tal">금융공학 레시피 </td>
+                    <td>2022-11-03<br>
+                        <span class="orange">2022-11-17</span>
+                    </td>
+                    <td>2022-11-17<br>
+                        <span class="orange">정상반납</span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- </form> -->
     </div>
 
-    <div id="selectbtn">
-        <button>회원등록</button>
-        <button>회원수정</button>
-        <button>회원삭제</button>
-    </div>
+
 </div>
-
         <footer>
             <footer>
     <div class="intromyself">
