@@ -2,8 +2,6 @@
 layout: base
 ---
 <style>
-
-
     #content {
         display: flex;
         align-items: center;
@@ -11,7 +9,7 @@ layout: base
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    .searchbooktitle {
+    #searchbooktitle {
         display: block;
         margin-bottom: 30px;
     }
@@ -21,7 +19,6 @@ layout: base
         flex-direction: row;
         width: 50%;
     }
-
 
     .img {
         width: 120px;
@@ -59,8 +56,26 @@ layout: base
     }
 </style>
 
+<script>
+    function bookCheck() {
+
+        let title;
+        title = prompt("책제목");
+
+        if (title) {
+            alert(`${title} 책 제목`)
+            /*if (책 list에 있는지 확인)
+            else 책 list에 없음 */
+        }
+        else {
+            console.log(birthStr);
+            alert("아무것도 입력하지 않았습니다.")
+        }
+    }
+</script>
+
 <div id="content">
-    <h2 class="searchbooktitle">도서 검색</h2>
+    <h2 id="searchbooktitle">도서 검색</h2>
     <form class="d-flex2" role="search">
 
         <input class="form-control me-2" type="search" placeholder="도서정보를 입력하세요" aria-label="Search">
@@ -95,11 +110,6 @@ layout: base
                     <span class="checkoutOX"><strong class="using">대출가능</strong></span>
                 </dd>
             </div>
-        </div>
-        
-        
-        
-        
-        
+        </div>  
     </div>
 </div>

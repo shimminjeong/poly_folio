@@ -90,8 +90,39 @@
         margin-bottom: 15px;
     }
 </style>
+<script>
+    function nameCheck() {
+
+        let name;
+        name = prompt("이름");
+
+        if (name) {
+            alert(`${name} 님 환영합니다.`)
+        }
+        else {
+            console.log(birthStr);
+            alert("아무것도 입력하지 않았습니다.")
+        }
+    }
+
+    function bookCheck() {
+
+        let title;
+        title = prompt("책제목");
+
+        if (title) {
+            alert(`${title} 책 제목`)
+            /*if (책 list에 있는지 확인)
+            else 책 list에 없음 */
+        }
+        else {
+            console.log(birthStr);
+            alert("아무것도 입력하지 않았습니다.")
+        }
+    }
 
 
+</script>
 
 <div id="content">
     <div id="info">

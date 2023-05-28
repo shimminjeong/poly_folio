@@ -91,7 +91,88 @@
     }
 </style>
 
+<script>
 
+    function nameCheck() {
+
+        let name;
+        name = prompt("이름");
+
+        if (name) {
+            alert(`${name} 님 환영합니다.`)
+        }
+        else {
+            console.log(birthStr);
+            alert("아무것도 입력하지 않았습니다.")
+        }
+    }
+
+    function birthCheck() {
+
+        const date = new Date();
+        const currentYear = date.getFullYear();// 상수
+
+        let birthStr;
+        let age; // 나이계산
+        birthStr = prompt("생년월일");
+
+        if (birthStr.length == 8) {
+            if (birthStr) {
+
+                birthYear = parseInt(birthStr.substring(0, 4));
+                let age = currentYear - birthYear + 1;
+                if (age >= 120) {
+                    alert("생년월일 제대로 입력했는지 확인하세요")
+                } else {
+                    alert(`현재 ${age}세 입니다`)
+                }
+            }
+            else {
+                // null 값 처리
+                console.log(birthStr);
+                alert("아무것도 입력하지 않았습니다.")
+            }
+        }
+        else {
+            alert("19981223 형식으로 작성해주세요");
+        }
+    }
+
+    function addressCheck() {
+
+        let address;
+        address = prompt("주소");
+
+        if (name) {
+            alert(`${address} 에 사시는군용`)
+        }
+        else {
+            console.log(birthStr);
+            alert("아무것도 입력하지 않았습니다.")
+        }
+    }
+
+    function phonenumberCheck() {
+
+        let phonenumber;
+        phonenumber = prompt("핸드폰번호");
+
+        if (phonenumber.length == 9) {
+            if (phonenumber) {
+                alert(`${phonenumber} 전화번호 등록`)
+            }
+            else {
+                console.log(birthStr);
+                alert("아무것도 입력하지 않았습니다.")
+            }
+        }
+        else {
+            alert("01012345678 형식으로 작성해주세요");
+        }
+    }
+
+    
+</script>
 
 <div id="content">
     <div id="info">
@@ -120,7 +201,6 @@
         <button>회원삭제</button>
     </div>
 </div>
-
         <footer>
             <footer>
     <div class="intromyself">

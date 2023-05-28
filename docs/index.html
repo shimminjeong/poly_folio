@@ -67,12 +67,70 @@
 
 
         </header>
-        <div id="content">
+        <style>
+    #daynight{
+        margin-top: 20px;
+
+    }
+</style>
+
+<div id="content">
+    
+    <input id='daynight' type="button" value="night" onclick="
+    var target=document.querySelector('body');
+    if(this.value === 'night'){
+        target.style.backgroundColor='black';
+        target.style.color='white';
+        this.value = 'day';
+    } else{
+        target.style.backgroundColor='white';
+        target.style.color='black';
+        this.value = 'night';
+    }
+    ">
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="도서정보를 입력하세요" aria-label="Search">
         <button class="btn btn-outline-success" href="booksearch.html" type="submit">search</button>
     </form>
 </div>
+
+<p>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://web1-m7gdj1yqxw.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</p>
+
+<p>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/646b3bdbad80445890ee5885/1h11e3kl9';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+</p>
 
         <footer>
             <footer>
