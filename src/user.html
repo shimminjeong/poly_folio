@@ -60,6 +60,7 @@ layout: base
                 } else {
                     alert(`현재 ${age}세 입니다`)
                     button.innerText = '확인완료';
+                    button.style.backgroundColor = 'green';
                 }
             }
             else {
@@ -77,6 +78,7 @@ layout: base
         if (address) {
             alert(`${address} 에 사시는군용`)
             button.innerText = '확인완료';
+            button.style.backgroundColor = 'green';
         }
         else {
             alert("아무것도 입력하지 않았습니다.")
@@ -91,6 +93,7 @@ layout: base
             if (phonenumber.length == 11) {
                 alert(`${phonenumber} 전화번호 등록`)
                 button.innerText = '확인완료';
+                button.style.backgroundColor = 'green';
             } else {
                 alert("01012345678 형식으로 작성해주세요")
             }

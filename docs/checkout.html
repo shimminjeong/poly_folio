@@ -89,26 +89,34 @@
         display: block;
         margin-bottom: 15px;
     }
+
+    .checkbtn{
+        background-color: red;
+        color: white;
+    }
 </style>
 <script>
-    function nameCheck() {
+    function nameCheck(button) {
 
-        let name;
-        name = prompt("이름");
+        var inputValue = document.querySelector('#namechk').value;
 
-        if (name) {
-            alert(`${name} 님 환영합니다.`)
-        }
-        else {
-            console.log(birthStr);
-            alert("아무것도 입력하지 않았습니다.")
+        if (inputValue === null || inputValue.trim() === '') {
+            alert('이름을 입력하세요!');
+        } else {
+            
+            /*if(저장된 회원 목록에 이름이 있어야함){
+            alert('${inputValue} 님 이시군요`');
+            button.innerText = '확인완료';
+            button.style.backgroundColor = 'green';
+            } else{
+                alert('해당 회원은 존재하지 않습니다.');
+            }*/
         }
     }
 
-    function bookCheck() {
+    function bookCheck(button) {
 
-        let title;
-        title = prompt("책제목");
+        var inputValue = document.querySelector('#bookchk').value;
 
         if (title) {
             alert(`${title} 책 제목`)
@@ -116,7 +124,6 @@
             else 책 list에 없음 */
         }
         else {
-            console.log(birthStr);
             alert("아무것도 입력하지 않았습니다.")
         }
     }
@@ -129,11 +136,13 @@
         <h2 class="section">대출 관리</h2>
         <div class="onerow">
             <span> 이름 </span>
-            <input class="inputbox" type="text" placeholder="이름을 입력하세요" aria-label="inputuser">
+            <input id='namechk' class="inputbox" type="text" placeholder="이름을 입력하세요" aria-label="inputuser">
+            <button class="checkbtn" onclick="nameCheck(this)">확인필요</button>
         </div>
         <div class="onerow">
             <span> 책제목 </span>
-            <input class="inputbox" type="text" placeholder="책제목을 입력하세요" aria-label="inputuser">
+            <input id='bookchk' class="inputbox" type="text" placeholder="책제목을 입력하세요" aria-label="inputuser">
+            <button class="checkbtn" onclick="bookCheck(this)">확인필요</button>
         </div>
     </div>
 
