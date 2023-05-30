@@ -18,4 +18,7 @@
 <url>
 <loc>http://localhost:4000/user.html</loc>
 </url>
+<url>
+<loc>http://localhost:4000/userinfo.html</loc>
+</url>
 </urlset>

@@ -70,67 +70,74 @@
 
 
         </header>
-        <style>
-    #daynight {
-        margin-top: 20px;
-    }
-</style>
-<script>
-    function nightDayHandler(self) {
-        var target = document.querySelector('body');
-        if (self.value === 'night') {
-            target.style.backgroundColor = 'black';
-            target.style.color = 'white';
-            self.value = 'day';
-        } else {
-            target.style.backgroundColor = 'white';
-            target.style.color = 'black';
-            self.value = 'night';
-        }
-    }
+        <script>
 
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function () { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://web1-m7gdj1yqxw.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    fetch('./assets/json/user.json')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("JSON 파일을 로드하는데 오류가 발생했습니다.");
+            }
+            console.log("json파일 로드 성공");
+            return response.json();
+        })
+        .then(userData => {
+            function createTable() {
+                const tableBody = document.getElementById("userListChk");
 
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/646b3bdbad80445890ee5885/1h11e3kl9';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
+                while (tableBody.firstChild) {
+                    tableBody.firstChild.remove();
+                }
+
+                userData.forEach((user) => {
+                    const row = document.createElement("tr");
+
+                    // 이름
+                    const name = document.createElement("td");
+                    name.textContent = user.name;
+                    row.appendChild(name);
+
+                    // 생년월일
+                    const birth = document.createElement("td");
+                    birth.textContent = user.birth;
+                    row.appendChild(birth);
+
+                    // 주소
+                    const address = document.createElement("td");
+                    address.textContent = user.address;
+                    row.appendChild(address);
+
+                    // 전화번호
+                    const phonenumber = document.createElement("td");
+                    phonenumber.textContent = user.phonenumber;
+                    row.appendChild(phonenumber);
+
+                    tableBody.appendChild(row);
+                });
+            }
+            createTable(); // Call the function to populate the table with data
+        })
+        .catch(error => {
+            console.log("json파일 로드 오류: " + error);
+        });
+
 </script>
 
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-    Disqus.</a></noscript>
-
 <div id="content">
+    <h2>회원목록</h2>
 
-    <input id='daynight' type="button" value="night" onclick="nightDayHandler(this);">
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="도서정보를 입력하세요" aria-label="Search">
-        <button class="btn btn-outline-success" href="booksearch.html" type="submit">search</button>
-    </form>
+    <table id="tab">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>생년월일</th>
+                <th>주소</th>
+                <th>전화번호</th>
+            </tr>
+        </thead>
+        <tbody id="userListChk"></tbody>
+    </table>
 </div>
 
-<p>
-<div id="disqus_thread"></div>
-</p>
         <footer>
             <footer>
     <div class="intromyself">

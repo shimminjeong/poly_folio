@@ -50,7 +50,10 @@
                     <a class="nav-link" href="user.html">회원관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="booksearch.html">도서검색</a>
+                    <a class="nav-link" href="userinfo.html">회원목록</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booksearch.html">도서목록</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="checkout.html">대출관리</a>
@@ -75,7 +78,7 @@
         if (inputValue === null || inputValue.trim() === '') {
             alert('이름을 입력하세요!');
         } else {
-            
+            alert(`${inputValue} 이시군요`);
             /*if(저장된 회원 목록에 이름이 있어야함){
             alert('${inputValue} 님 이시군요`');
             button.innerText = '확인완료';
