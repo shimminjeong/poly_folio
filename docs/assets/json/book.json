@@ -1,0 +1,32 @@
+[
+    {
+        "title": "자바",
+        "author": "마이클 포거스 지음",
+        "publisher": "한빛미디어",
+        "checkoutstatus" : "대출 불가"
+    },
+    {
+        "title": "곰돌이푸",
+        "author": "피글렛",
+        "publisher": "미래출판",
+        "checkoutstatus" : "대출 가능"
+    },
+    {
+        "title": "교통경찰의 밤",
+        "author": "히가시노게이고",
+        "publisher": "현재출판",
+        "checkoutstatus" : "대출 불가"
+    },
+    {
+        "title": "구의증명",
+        "author": "마이클 포거스 지음",
+        "publisher": "한빛미디어",
+        "checkoutstatus" : "대출 가능"
+    },
+    {
+        "title": "html",
+        "author": "jiny",
+        "publisher": "poly",
+        "checkoutstatus" : "대출 가능"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "심민정",
+        "birth": "데이터분석",
+        "address": "광명시",
+        "phonenumber": "01050437629"
+    },
+    {
+        "name": "임서영",
+        "birth": "IT공학",
+        "address": "청라국제도시",
+        "phonenumber": "01011111111"
+    },
+    {
+        "name": "이정민",
+        "birth": "컴퓨터과학",
+        "address": 3,
+        "phonenumber": "01022222222"
+    }
+]

@@ -1,0 +1,67 @@
+---
+layout: base
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table id="bookTable">
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>제목</th>
+            <th>대출일</th>
+            <th>예상 반납일</th>
+            <th>반납일</th>
+            <th>반납 상태</th>
+        </tr>
+    </table>
+
+    <script>
+
+        var table = document.getElementById("bookTable");
+
+        for (var i = 0; i < books.length; i++) {
+            var book = books[i];
+            var row = table.insertRow(i + 1);
+            var numberCell = row.insertCell(0);
+            var nameCell = row.insertCell(1);
+            var titleCell = row.insertCell(2);
+            var checkoutCell = row.insertCell(3);
+            var expReturnCell = row.insertCell(4);
+            var returnCell = row.insertCell(5);
+            var returnStateCell = row.insertCell(6);
+
+            numberCell.innerHTML = book.number;
+            nameCell.innerHTML = book.name;
+            titleCell.innerHTML = book.title;
+            checkoutCell.innerHTML = book.checkoutdate;
+            expReturnCell.innerHTML = book.expreturndate;
+            returnCell.innerHTML = book.returndate;
+            returnStateCell.innerHTML = book.returnstate;
+        }
+    </script>
+</body>
+</html>

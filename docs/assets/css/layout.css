@@ -14,7 +14,6 @@
     margin: 0 auto;
 }
 
-
 .logo>img {
     width: 50px;
     height: 50px;
@@ -37,6 +36,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 footer {
@@ -65,4 +66,93 @@ footer>.footercontent>div {
 
 btn>.btn-outline-success {
     width: 50px;
+}
+
+#info {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+.onerow {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.checkbtn {
+    background-color: red;
+    color: white;
+}
+
+#searchbooktitle {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.d-flex2 {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-top: 50px;
+}
+
+.img {
+    width: 120px;
+    height: 150px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ol {
+    list-style-type: none;
+}
+
+.checkoutOX {
+    border: 1px solid gray;
+    margin-left: 30px;
+}
+
+.bookcontent {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    justify-content: center;
+    text-align: left;
+}
+
+.ico {
+    margin-left: 5px;
+}
+
+#_searchListChk {
+    margin-top: 50px;
+}
+
+caption {
+    display: none;
+}
+
+.dataLoanTable {
+    display: flex;
+    border: 2px solid black;
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+
+#tab{
+    margin-top: 50px;
 }

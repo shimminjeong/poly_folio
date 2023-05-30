@@ -2,103 +2,87 @@
 layout: base
 ---
 
-<style>
-    #content {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        margin-top: 50px;
-        margin-bottom: 50px;
-    }
+<script>
+    fetch('./assets/json/checkout.json')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("JSON 파일을 로드하는데 오류가 발생했습니다.");
+            }
+            console.log("json파일 로드 성공");
+            return response.json();
+        })
+        .then(checkoutData => {
+            function createTable() {
+                const tableBody = document.getElementById("loanHistoryListChk");
 
-    caption {
-        display: none;
-    }
+                // 기존의 tbody 내용 제거
+                while (tableBody.firstChild) {
+                    tableBody.firstChild.remove();
+                }
+
+                checkoutData.forEach((checkout) => {
+                    const row = document.createElement("tr");
+
+                    // 번호
+                    const number = document.createElement("td");
+                    number.textContent = checkout.number;
+                    row.appendChild(number);
+
+                    // 이름
+                    const name = document.createElement("td");
+                    name.textContent = checkout.name;
+                    row.appendChild(name);
+
+                    // 책 제목
+                    const title = document.createElement("td");
+                    title.textContent = checkout.title;
+                    row.appendChild(title);
+
+                    // 대여일자
+                    const checkoutdate = document.createElement("td");
+                    checkoutdate.textContent = checkout.checkoutdate;
+                    row.appendChild(checkoutdate);
+
+                    // 반납예정일자
+                    const expreturndate = document.createElement("td");
+                    expreturndate.textContent = checkout.expreturndate;
+                    row.appendChild(expreturndate);
+
+                    // 반납일자
+                    const returndate = document.createElement("td");
+                    returndate.textContent = checkout.returndate;
+                    row.appendChild(returndate);
+
+                    // 반납상태
+                    const returnstate = document.createElement("td");
+                    returnstate.textContent = checkout.returnstate;
+                    row.appendChild(returnstate);
+
+                    tableBody.appendChild(row);
+                });
+            }
+            createTable(); // Call the function to populate the table with data
+        })
+        .catch(error => {
+            console.log("json파일 로드 오류: " + error);
+        });
+</script>
 
 
-    .dataLoanTable {
-        display: flex;
-        border: 2px solid black;
-        margin-top: 30px;
-        overflow-x: auto;
-    }
-
-
-    th,
-    td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-    }
-</style>
 <div id="content">
     <h2>대여목록</h2>
-
-    <div class="dataLoanTable">
-        <!-- <script type="text/javascript">
-            function wjChecked() {
-                var isCheck = false;
-                $('input[name="recKey[]"]').each(function () {
-                    if ($(this).attr('checked')) {
-                        isCheck = true;
-                    }
-                })
-                if (!isCheck) {
-                    alert('하나이상 자료를 선택해 주세요.');
-                    return false;
-                }
-                return true;
-            }
-        </script>
-        <form id="forminfo" method="post" name="loanDataXls" action="./index.php?mod=wdDataSearch&amp;act=loanDataXls"
-            onsubmit="return wjChecked()" target="_blank"> -->
-        <table id="tabinfo" summary="">
-            <caption>번호, 등록번호, 자료명, 대출일 / 반납예정일, 반납일 / 반납상태</caption>
-            <colgroup>
-                <col width="10%">
-                <col width="15%">
-                <col width="30%">
-                <col width="20%">
-                <col width="20%">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th scope="col">번호</th>
-                    <th scope="col">이름</th>
-                    <th scope="col">책제목</th>
-                    <th scope="col">대출일 / 반납예정일</th>
-                    <th scope="col">반납일 / 반납상태</th>
-
-                </tr>
-            </thead>
-            <tbody id="_loanHistoryListChk">
-                <tr>
-                    <td>6</td>
-                    <td class="tal">심민정</td>
-                    <td>교통경찰의 밤</td>
-                    <td>2022-11-28<br>
-                        <span class="orange">2022-12-12</span>
-                    </td>
-                    <td>2022-12-13<br>
-                        <span class="orange">연체반납</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="tal">심영민</td>
-                    <td class="tal">금융공학 레시피 </td>
-                    <td>2022-11-03<br>
-                        <span class="orange">2022-11-17</span>
-                    </td>
-                    <td>2022-11-17<br>
-                        <span class="orange">정상반납</span>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-        <!-- </form> -->
-    </div>
-
-
+    <table id="tab">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>제목</th>
+                <th>대여일자</th>
+                <th>반납예정일자</th>
+                <th>반납일자</th>
+                <th>반납상태</th>
+            </tr>
+        </thead>
+        <tbody id="loanHistoryListChk"></tbody>
+    </table>
 </div>
