@@ -2,35 +2,12 @@
 layout: base
 ---
 
-<style>
-    #daynight {
-        margin-top: 20px;
-    }
-</style>
-<script>
-    function nightDayHandler(self) {
-        var target = document.querySelector('body');
-        if (self.value === 'night') {
-            target.style.backgroundColor = 'black';
-            target.style.color = 'white';
-            self.value = 'day';
-        } else {
-            target.style.backgroundColor = 'white';
-            target.style.color = 'black';
-            self.value = 'night';
-        }
-    }
-
-</script>
-
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-    Disqus.</a></noscript>
+<script src="./assets/js/check.js"></script>
 
 <div id="content">
-
     <input id='daynight' type="button" value="night" onclick="nightDayHandler(this);">
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="도서정보를 입력하세요" aria-label="Search">
-        <button class="btn btn-outline-success" href="booksearch.html" type="submit">search</button>
+        <button class="btn btn-outline-success" onclick="notcomplete(this)">search</button>
     </form>
 </div>

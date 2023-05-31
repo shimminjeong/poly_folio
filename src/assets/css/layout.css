@@ -48,7 +48,6 @@ footer {
     background-color: #dad7d7;
 }
 
-
 footer>.footercontent {
     display: flex;
     width: 100%;
@@ -60,6 +59,9 @@ footer>.footercontent>div {
     margin-right: 5%;
 }
 
+#daynight {
+        margin-top: 20px;
+    }
 .intromyself {
     width: 50%;
 }
@@ -145,13 +147,11 @@ caption {
     overflow-x: auto;
 }
 
-th,
-td {
+th, td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;
 }
-
 
 #tab{
     margin-top: 50px;
