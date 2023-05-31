@@ -2,8 +2,6 @@
 layout: base
 ---
 
-<script src="./assets/js/check.js"></script>
-
 <div id="content">
     <div id="info">
         <h2 class="section">회원 관리</h2>
@@ -15,8 +13,7 @@ layout: base
         </div>
         <div class="onerow">
             <span> 생년월일 </span>
-            <input id='birthchk' class="inputbox" type="text" placeholder="생년월일을 입력하세요" aria-label="inputuser"
-                onkeypress="birthCheck(event)">
+            <input id='birthchk' class="inputbox" type="text" placeholder="생년월일을 입력하세요" aria-label="inputuser">
             <button id="birthcheckbtn" class="checkbtn" onclick="birthCheck(this)">확인필요</button>
         </div>
         <div class="onerow">
@@ -27,8 +24,7 @@ layout: base
         </div>
         <div class="onerow">
             <span> 전화번호 </span>
-            <input id='phonenumberchk' class="inputbox" type="text" placeholder="전화번호를 입력하세요" aria-label="inputuser"
-                onkeypress="phonenumberCheck(event)">
+            <input id='phonenumberchk' class="inputbox" type="text" placeholder="전화번호를 입력하세요" aria-label="inputuser">
             <button id="phonecheckbtn" class="checkbtn" onclick="phonenumberCheck(this)">확인필요</button>
         </div>
     </div>
