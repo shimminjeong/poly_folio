@@ -2,66 +2,7 @@
 layout: base
 ---
 
-<script>
-    function bookCheck() {
-        if (title) {
-            alert(`${title} 책 제목`)
-        } else {
-            console.log(birthStr);
-            alert("아무것도 입력하지 않았습니다.")
-        }
-    }
-
-    fetch('./assets/json/book.json')
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("JSON 파일을 로드하는데 오류가 발생했습니다.");
-            }
-            console.log("json파일 로드 성공");
-            return response.json();
-        })
-        .then(bookData => {
-            function createTable() {
-                const tableBody = document.getElementById("bookListChk");
-
-                // 기존의 tbody 내용 제거
-                while (tableBody.firstChild) {
-                    tableBody.firstChild.remove();
-                }
-
-                bookData.forEach((book) => {
-                    const row = document.createElement("tr");
-
-                    // 제목
-                    const title = document.createElement("td");
-                    title.textContent = book.title;
-                    row.appendChild(title);
-
-                    // 저자
-                    const author = document.createElement("td");
-                    author.textContent = book.author;
-                    row.appendChild(author);
-
-                    // 출판사
-                    const publisher = document.createElement("td");
-                    publisher.textContent = book.publisher;
-                    row.appendChild(publisher);
-
-                    // 대출가능상태
-                    const checkoutstatus = document.createElement("td");
-                    checkoutstatus.textContent = book.checkoutstatus;
-                    row.appendChild(checkoutstatus);
-
-                    tableBody.appendChild(row);
-                });
-            }
-            createTable(); // Call the function to populate the table with data
-        })
-        .catch(error => {
-            console.log("json파일 로드 오류: " + error);
-        });
-
-</script>
+<script src="./assets/js/json.js"></script>
 
 <div id="content">
     <h2>도서 목록</h2>
