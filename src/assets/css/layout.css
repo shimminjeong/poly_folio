@@ -1,236 +1,245 @@
+@font-face {
+  font-family: 'Hana';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.ttf') format("truetype");
+  font-display: swap;
+}
 
 @font-face {
-    font-family: 'Hana';
-    font-weight: 300;
-    font-style: normal;
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot');
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot?#iefix') format('embedded-opentype'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff2') format('woff2'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff') format('woff'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.ttf') format("truetype");
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Hana';
-    font-weight: 500;
-    font-style: normal;
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.eot');
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.eot?#iefix') format('embedded-opentype'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.woff2') format('woff2'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.woff') format('woff'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.ttf') format("truetype");
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Hana';
-    font-weight: 700;
-    font-style: normal;
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.eot');
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.eot?#iefix') format('embedded-opentype'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.woff2') format('woff2'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.woff') format('woff'),
-      url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.ttf') format("truetype");
-    font-display: swap;
-  }
+  font-family: 'Hana';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaMedium.ttf') format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hana';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaBold.ttf') format("truetype");
+  font-display: swap;
+}
+
 
 .wrapper {
-    font-family: "Hana", sans-serif;
-    text-align: center;
-    height: 100vh;
-}
-
-#headerBar {
-    display: flex;
-    margin-left: 2%;
-    margin-top: 2%;
-}
-
-/*.headerbar>.subject */
-.subject {
-    margin: 0 auto;
-}
-
-.logo>img {
-    width: 50px;
-    height: 50px;
-}
-
-.d-flex {
-    display: block;
-    text-align: center;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  font-family: "Hana", sans-serif;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column
 }
 
 #content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
+#headerBar {
+  display: flex;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.subject {
+  margin: 0 auto;
+}
+
+.logo>img {
+  width: 50px;
+  height: 50px;
+}
+
+
+.d-flex {
+  display: block;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control {
+  display: flex;
+}
+
+
+
 footer {
-    display: flex;
-    bottom: 0;
-    width: 100%;
-    min-height: 100px;
-    background-color: #dad7d7;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  min-height: 100px;
+  background-color: #dad7d7;
 }
 
 footer>.footercontent {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 
 }
 
 footer>.footercontent>div {
-    margin-right: 5%;
+  margin-right: 5%;
 }
 
 #daynight {
-        margin-top: 20px;
-    }
+  display: block;
+  margin-left: 90%;
+  
+}
+
 .intromyself {
-    width: 50%;
+  width: 50%;
 }
 
 btn>.btn-outline-success {
-    width: 50px;
+  width: 50px;
 }
 
 #info {
-    display: block;
-    margin-bottom: 30px;
+  display: block;
+  margin-bottom: 30px;
 }
 
 .section {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
+/* 중첩flex */
 .onerow {
-    display: block;
-    margin-bottom: 15px;
+  display: block;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center
 }
 
 .checkbtn {
-    background-color: red;
-    color: white;
+  background-color: red;
+  color: white;
+  margin-left: 10px;
 }
 
 #searchbooktitle {
-    display: block;
-    margin-bottom: 30px;
+  display: block;
+  margin-bottom: 30px;
 }
 
 .d-flex2 {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin-top: 50px;
 }
 
 .img {
-    width: 120px;
-    height: 150px;
-}
-
-ul {
-    list-style-type: none;
-}
-
-ol {
-    list-style-type: none;
+  width: 120px;
+  height: 150px;
 }
 
 .checkoutOX {
-    border: 1px solid gray;
-    margin-left: 30px;
+  border: 1px solid gray;
+  margin-left: 30px;
 }
 
 .bookcontent {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    border: 1px solid gray;
-    justify-content: center;
-    text-align: left;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  justify-content: center;
+  text-align: left;
 }
 
 .ico {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 #_searchListChk {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 caption {
-    display: none;
+  display: none;
 }
 
 .dataLoanTable {
-    display: flex;
-    border: 2px solid black;
-    margin-top: 30px;
-    overflow-x: auto;
+  display: flex;
+  border: 2px solid black;
+  margin-top: 30px;
+  overflow-x: auto;
 }
 
 #tab {
-    margin-top: 50px;
-    width: 50%;
-  } 
+  margin-top: 50px;
+  width: 50%;
 
-   
-  #tab th, #tab td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  #tab th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  #tab tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  #tab tr:hover {
-    background-color: #eaeaea;
-  }
+}
 
-  #info {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: stretch
-  }
-  
-  span {
-    display: inline-block;
-    width: 100px;
-    font-weight: bold;
-  }
-  
-  .inputbox {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .checkbtn:hover {
-    background-color: #45a049;
-  }
-  
+
+#tab th,
+#tab td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#tab th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#tab tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#tab tr:hover {
+  background-color: #eaeaea;
+}
+
+#info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: stretch
+}
+
+span {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+
+.inputbox {
+  flex-grow: 1;
+  display: flex;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbtn:hover {
+  background-color: #45a049;
+}
