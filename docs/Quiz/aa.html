@@ -66,6 +66,18 @@
 </head>
 
 <body>
+    <table id="tab">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="check-all"></th>
+                <th>Id</th>
+                <th>타이틀</th>
+            </tr>
+        </thead>
+        <tbody id="infolist"></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+
     <script>
         fetch('forum.json')
             .then((response) => {
@@ -75,17 +87,16 @@
                 return response.json();
             })
             .then((data) => {
-                const itemsPerPage = 10; // Number of items to display per page
-                let currentPage = 1; // Current page number
+                const itemsPerPage = 10; 
+                let currentPage = 1; 
 
                 function createTable() {
                     const tableBody = document.getElementById("infolist");
-
                     const startIndex = (currentPage - 1) * itemsPerPage;
                     const endIndex = startIndex + itemsPerPage;
                     const pageData = data.slice(startIndex, endIndex);
 
-                    tableBody.innerHTML = ""; // Clear previous table data
+                    tableBody.innerHTML = "";
 
                     pageData.forEach((datalist) => {
                         const row = document.createElement("tr");
@@ -107,46 +118,34 @@
                         title.textContent = datalist.title;
                         row.appendChild(title);
 
+                        row.addEventListener("dragstart", dragStart);
+                        row.addEventListener("dragend", dragEnd);
+                        row.addEventListener("dragover", dragOver);
+                        row.addEventListener("drop", drop);
+
                         tableBody.appendChild(row);
                     });
                 }
 
-                // thead에 있는 checkbox 요소 선택
                 const table = document.getElementById("tab");
                 const theadCheckbox = table.querySelector("thead input[type='checkbox']");
 
-                // thead checkbox 클릭 이벤트 리스너 등록
                 theadCheckbox.addEventListener("click", function () {
                     const checkboxes = table.querySelectorAll("tbody input[type='checkbox']");
-
                     checkboxes.forEach(checkbox => {
                         checkbox.checked = theadCheckbox.checked;
                         toggleRowSelection(checkbox);
                     });
                 });
 
-                // tbody checkbox 클릭 이벤트 리스너 등록
                 table.addEventListener("click", function (event) {
                     if (event.target.type === "checkbox") {
                         toggleRowSelection(event.target);
                     }
                 });
 
-                // 드래그 앤 드롭 가능한 체크박스 선택
-                const draggableCheckboxes = table.querySelectorAll("tbody input[type='checkbox']");
-
-                draggableCheckboxes.forEach(checkbox => {
-                    checkbox.addEventListener("dragstart", dragStart);
-                    checkbox.addEventListener("dragend", dragEnd);
-                    checkbox.addEventListener("dragenter", dragEnter);
-                    checkbox.addEventListener("dragover", dragOver);
-                    checkbox.addEventListener("dragleave", dragLeave);
-                    checkbox.addEventListener("drop", drop);
-                });
-
                 function toggleRowSelection(checkbox) {
                     const row = checkbox.parentNode.parentNode;
-
                     if (checkbox.checked) {
                         row.classList.add("selected");
                         row.setAttribute("draggable", true);
@@ -160,16 +159,16 @@
                 let prevIndex = null;
                 let dragOverElement = null;
 
-                // 드래그 시작할 때 호출되는 함수
                 function dragStart(e) {
-                    draggedElement = e.target.parentNode;
-                    prevIndex = Array.from(draggedElement.parentNode.children).indexOf(draggedElement);
-                    e.dataTransfer.effectAllowed = "move";
-                    e.dataTransfer.setData("text/html", draggedElement.innerHTML);
-                    draggedElement.classList.add("dragging");
+                    if (e.target.closest("tr").classList.contains("selected")) {
+                        draggedElement = e.target.closest("tr");
+                        prevIndex = Array.from(draggedElement.parentNode.children).indexOf(draggedElement);
+                        e.dataTransfer.effectAllowed = "move";
+                        e.dataTransfer.setData("text/html", draggedElement.innerHTML);
+                        draggedElement.classList.add("dragging");
+                    }
                 }
 
-                // 드래그 종료할 때 호출되는 함수
                 function dragEnd() {
                     const draggableRows = table.querySelectorAll("tbody tr.selected");
                     draggableRows.forEach(row => {
@@ -177,40 +176,30 @@
                     });
                 }
 
-                // 드래그 요소가 다른 요소 위에 들어갈 때 호출되는 함수
-                function dragEnter(e) {
-                    dragOverElement = e.target.parentNode;
-                    dragOverElement.classList.add("dragover");
-                }
-
-                // 드래그 요소가 다른 요소 위에 있을 때 호출되는 함수
                 function dragOver(e) {
                     e.preventDefault();
+                    if (e.target.closest("tr").classList.contains("selected")) {
+                        dragOverElement = e.target.closest("tr");
+                        dragOverElement.classList.add("dragover");
+                    }
                 }
 
-                // 드래그 요소가 다른 요소를 벗어날 때 호출되는 함수
-                function dragLeave(e) {
-                    dragOverElement.classList.remove("dragover");
-                }
-
-                // 드롭할 때 호출되는 함수
                 function drop(e) {
                     e.preventDefault();
-                    draggedElement.classList.remove("dragging");
-                    dragOverElement.classList.remove("dragover");
-
-                    const dropIndex = Array.from(dragOverElement.parentNode.children).indexOf(dragOverElement);
-
-                    if (prevIndex < dropIndex) {
-                        dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement.nextSibling);
-                    } else {
-                        dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement);
+                    if (draggedElement !== null) {
+                        draggedElement.classList.remove("dragging");
+                        dragOverElement.classList.remove("dragover");
+                        const dropIndex = Array.from(dragOverElement.parentNode.children).indexOf(dragOverElement);
+                        if (prevIndex < dropIndex) {
+                            dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement.nextSibling);
+                        } else {
+                            dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement);
+                        }
                     }
                 }
 
                 function updatePaginationButtons() {
                     const totalPages = Math.ceil(data.length / itemsPerPage);
-
                     const paginationContainer = document.getElementById("pagination");
                     paginationContainer.innerHTML = "";
 
@@ -226,30 +215,17 @@
                         if (i === currentPage) {
                             button.classList.add("active");
                         }
-
                         paginationContainer.appendChild(button);
                     }
                 }
 
-                createTable(); // Call the function to populate the table with data
+                createTable();
                 updatePaginationButtons();
-                console.log(data);
             })
             .catch((error) => {
                 console.log('Error:', error);
             });
     </script>
-    <table id="tab">
-        <thead>
-            <tr>
-                <th><input type="checkbox" id="check-all"></th>
-                <th>Id</th>
-                <th>타이틀</th>
-            </tr>
-        </thead>
-        <tbody id="infolist"></tbody>
-    </table>
-    <div class="pagination" id="pagination"></div>
 </body>
 
 </html>
