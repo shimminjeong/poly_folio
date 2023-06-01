@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta id="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: black;
+            color: white;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #a29e9e;
+        }
+
+        tbody tr.selected {
+            background-color: greenyellow;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pagination button.active {
+            background-color: green;
+        }
+
+        .dragging {
+            opacity: 0.6;
+        }
+
+        .dragover {
+            background-color: lightblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table id="tab">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="check-all"></th>
+                <th>Id</th>
+                <th>타이틀</th>
+            </tr>
+        </thead>
+        <tbody id="infolist"></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        fetch('forum.json')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not OK');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const itemsPerPage = 10; 
+                let currentPage = 1; 
+
+                function createTable() {
+                    const tableBody = document.getElementById("infolist");
+                    const startIndex = (currentPage - 1) * itemsPerPage;
+                    const endIndex = startIndex + itemsPerPage;
+                    const pageData = data.slice(startIndex, endIndex);
+
+                    tableBody.innerHTML = "";
+
+                    pageData.forEach((datalist) => {
+                        const row = document.createElement("tr");
+
+                        // checkbox userId
+                        const userId = document.createElement("td");
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        userId.appendChild(checkbox);
+                        row.appendChild(userId);
+
+                        // id
+                        const id = document.createElement("td");
+                        id.textContent = datalist.id;
+                        row.appendChild(id);
+
+                        // title
+                        const title = document.createElement("td");
+                        title.textContent = datalist.title;
+                        row.appendChild(title);
+
+                        row.addEventListener("dragstart", dragStart);
+                        row.addEventListener("dragend", dragEnd);
+                        row.addEventListener("dragover", dragOver);
+                        row.addEventListener("drop", drop);
+
+                        tableBody.appendChild(row);
+                    });
+                }
+
+                const table = document.getElementById("tab");
+                const theadCheckbox = table.querySelector("thead input[type='checkbox']");
+
+                theadCheckbox.addEventListener("click", function () {
+                    const checkboxes = table.querySelectorAll("tbody input[type='checkbox']");
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = theadCheckbox.checked;
+                        toggleRowSelection(checkbox);
+                    });
+                });
+
+                table.addEventListener("click", function (event) {
+                    if (event.target.type === "checkbox") {
+                        toggleRowSelection(event.target);
+                    }
+                });
+
+                function toggleRowSelection(checkbox) {
+                    const row = checkbox.parentNode.parentNode;
+                    if (checkbox.checked) {
+                        row.classList.add("selected");
+                        row.setAttribute("draggable", true);
+                    } else {
+                        row.classList.remove("selected");
+                        row.setAttribute("draggable", false);
+                    }
+                }
+
+                let draggedElement = null;
+                let prevIndex = null;
+                let dragOverElement = null;
+
+                function dragStart(e) {
+                    if (e.target.closest("tr").classList.contains("selected")) {
+                        draggedElement = e.target.closest("tr");
+                        prevIndex = Array.from(draggedElement.parentNode.children).indexOf(draggedElement);
+                        e.dataTransfer.effectAllowed = "move";
+                        e.dataTransfer.setData("text/html", draggedElement.innerHTML);
+                        draggedElement.classList.add("dragging");
+                    }
+                }
+
+                function dragEnd() {
+                    const draggableRows = table.querySelectorAll("tbody tr.selected");
+                    draggableRows.forEach(row => {
+                        row.classList.remove("dragging");
+                    });
+                }
+
+                function dragOver(e) {
+                    e.preventDefault();
+                    if (e.target.closest("tr").classList.contains("selected")) {
+                        dragOverElement = e.target.closest("tr");
+                        dragOverElement.classList.add("dragover");
+                    }
+                }
+
+                function drop(e) {
+                    e.preventDefault();
+                    if (draggedElement !== null) {
+                        draggedElement.classList.remove("dragging");
+                        dragOverElement.classList.remove("dragover");
+                        const dropIndex = Array.from(dragOverElement.parentNode.children).indexOf(dragOverElement);
+                        if (prevIndex < dropIndex) {
+                            dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement.nextSibling);
+                        } else {
+                            dragOverElement.parentNode.insertBefore(draggedElement, dragOverElement);
+                        }
+                    }
+                }
+
+                function updatePaginationButtons() {
+                    const totalPages = Math.ceil(data.length / itemsPerPage);
+                    const paginationContainer = document.getElementById("pagination");
+                    paginationContainer.innerHTML = "";
+
+                    for (let i = 1; i <= totalPages; i++) {
+                        const button = document.createElement("button");
+                        button.textContent = i;
+                        button.addEventListener("click", function () {
+                            currentPage = i;
+                            createTable();
+                            updatePaginationButtons();
+                        });
+
+                        if (i === currentPage) {
+                            button.classList.add("active");
+                        }
+                        paginationContainer.appendChild(button);
+                    }
+                }
+
+                createTable();
+                updatePaginationButtons();
+            })
+            .catch((error) => {
+                console.log('Error:', error);
+            });
+    </script>
+</body>
+
+</html>
